@@ -16,11 +16,16 @@ public class Main {
         event.registerTeam(lori);
         event.cloaseRegistraion();
 
-        Game game = new Game(shawn, lori);
-        System.out.println(shawn.getName() + "[" + shawn.getSkillLevel() + "] vs " + lori.getName() + "[" + lori.getSkillLevel() + "]");
+        System.out.println(shawn + " vs " + lori);
         for (int i = 0; i < 20; i++) {
-            Team winner = game.play();
-            System.out.println("The winner is... " + winner.getName() + " " + game.getHomeTeamScore() + " to " + game.getAwayTeamScore());
+            Game game = null;
+            if (i % 2 == 0)
+                game = new Game(shawn, lori);
+            else
+                game = new Game(lori, shawn);
+            game.play();
+            Team winner = game.winner();
+            System.out.println(winner.getName() + " " + game);
         }
    }
 }
