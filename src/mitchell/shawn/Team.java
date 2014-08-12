@@ -11,6 +11,8 @@ public class Team implements Comparable<Team> {
     private String name;
     private static String pattern = "###.###";
     private static DecimalFormat format = new DecimalFormat(pattern);
+    private int wins = 0;
+    private int losses = 0;
 
     public Team(String name, double skillLevel) {
         if (skillLevel > 10 || skillLevel < 0)
@@ -27,14 +29,29 @@ public class Team implements Comparable<Team> {
         return skillLevel;
     }
 
+    public void recordWin() {
+        wins++;
+    }
+
+    public void recordLoss() {
+        losses++;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
     @Override
     public int compareTo(Team that) {
-        double diff = this.getSkillLevel() - that.getSkillLevel();
-        return diff == 0 ? 0 : diff > 1 ? 1 : -1;
+        return Double.compare(skillLevel, that.getSkillLevel());
     }
 
     @Override
     public String toString() {
-        return name + "[" + format.format(skillLevel) + "]";
+        return name + "[" + format.format(skillLevel) + "] (" + getWins() + " / " + getLosses() + ")";
     }
 }

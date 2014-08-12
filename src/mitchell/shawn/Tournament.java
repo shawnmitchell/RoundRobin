@@ -36,7 +36,26 @@ public class Tournament {
         if (registrationOpen)
             cloaseRegistraion();
 
-
-
+        for (int i = 0; i < teams.size() - 1; i ++) {
+            System.out.println("**** ROUND " + (i + 1) + " ****\n");
+            for (Team team : teams)
+                System.out.println(team);
+            for (Game game : makePairings())
+                game.play();
+            shiftPairings();
+        }
     }
+
+    private void shiftPairings() {
+        for (int i = 0; i < teams.size() -1; i++)
+            teams.add(teams.remove(teams.size()-2));
+    }
+
+    private ArrayList<Game> makePairings() {
+        ArrayList<Game> games = new ArrayList<Game>(teams.size() / 2);
+        for (int i = 0; i < teams.size() / 2; i++)
+            games.add(new Game(teams.get(i), teams.get(teams.size() - (i + 1))));
+        return games;
+    }
+
 }

@@ -44,6 +44,14 @@ public class Game {
         homeTeamScore = calculateHomeTeamScore();
         awayTeamScore = calculateAwayTeamScore();
         homeTeamWon = homeTeamScore >= awayTeamScore;
+        if (homeTeamWon) {
+            home.recordWin();
+            away.recordLoss();
+        }
+        else {
+            home.recordLoss();
+            away.recordWin();
+        }
         gamePlayed = true;
     }
 
