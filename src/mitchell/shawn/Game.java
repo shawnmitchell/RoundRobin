@@ -9,6 +9,8 @@ public class Game {
 
     private Team home;
     private Team away;
+    private double homeTeamScore = 0;
+    private double awayTeamScore = 0;
 
     public Game(Team home, Team away) {
         this.home = home;
@@ -23,10 +25,18 @@ public class Game {
         return away;
     }
 
+    public double getHomeTeamScore() {
+        return homeTeamScore;
+    }
+
+    public double getAwayTeamScore() {
+        return awayTeamScore;
+    }
+
     // notice that in the event of a tie, the home team wins
     public Team play() {
-        double homeTeamScore = getHomeTeamScore();
-        double awayTeamScore = getAwayTeamScore();
+        homeTeamScore = calculateHomeTeamScore();
+        awayTeamScore = calculateAwayTeamScore();
         return homeTeamScore >= awayTeamScore ? home : away;
     }
 
@@ -34,11 +44,11 @@ public class Game {
         return Math.random() * 10;
     }
 
-    private double getHomeTeamScore() {
+    private double calculateHomeTeamScore() {
         return getTeamScore(home) * HomeTeamEdge;
     }
 
-    private double getAwayTeamScore() {
+    private double calculateAwayTeamScore() {
         return getTeamScore(away);
     }
 

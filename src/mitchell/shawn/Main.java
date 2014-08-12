@@ -15,6 +15,12 @@ public class Main {
         event.registerTeam(shawn);
         event.registerTeam(lori);
         event.cloaseRegistraion();
-        // event.registerTeam(new Team("nora", GetRandomSkillLevel()));
+
+        Game game = new Game(shawn, lori);
+        System.out.println(shawn.getName() + "[" + shawn.getSkillLevel() + "] vs " + lori.getName() + "[" + lori.getSkillLevel() + "]");
+        for (int i = 0; i < 20; i++) {
+            Team winner = game.play();
+            System.out.println("The winner is... " + winner.getName() + " " + game.getHomeTeamScore() + " to " + game.getAwayTeamScore());
+        }
    }
 }
