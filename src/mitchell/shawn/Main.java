@@ -8,7 +8,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Tournament event = new Tournament();
+        RoundRobinTournament event = new RoundRobinTournament();
 
         for (int i = 0; i < NumberOfTeams; i++) {
             event.registerTeam(new Team("Team" + (i+1), GetRandomSkillLevel()));
