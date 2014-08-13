@@ -21,5 +21,6 @@ public class Main {
         for (int i = 0; i < NumberOfTeams; i++)
             bracket.registerTeam(new Team("Team" + (i+1), GetRandomSkillLevel()));
         bracket.closeRegistration();
+        bracket.start();
    }
 }
