@@ -19,6 +19,6 @@ public abstract class Tournament {
         else
             throw new IllegalStateException("Attempt to register team after registration is closed");
     }
-
+    public abstract void closeRegistration();
     public abstract void start();
 }

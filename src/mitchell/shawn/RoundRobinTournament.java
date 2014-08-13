@@ -8,10 +8,7 @@ import java.util.Collections;
  */
 public class RoundRobinTournament extends Tournament {
 
-    public RoundRobinTournament() {
-    }
-
-    public void cloaseRegistraion() {
+    public void closeRegistration() {
         if (teams.size() % 2 == 1)
             teams.add(new Team("dummy", 0));
         registrationOpen = false;
@@ -24,15 +21,15 @@ public class RoundRobinTournament extends Tournament {
 
     public void start() {
         if (registrationOpen)
-            cloaseRegistraion();
+            closeRegistration();
 
         for (int i = 0; i < teams.size() - 1; i ++) {
             System.out.println("**** ROUND " + (i + 1) + " ****\n");
-            for (Team team : teams)
-                System.out.println(team);
             for (Game game : makePairings())
                 game.play();
             shiftPairings();
+            for (Team team : teams)
+                System.out.println(team);
         }
     }
 
